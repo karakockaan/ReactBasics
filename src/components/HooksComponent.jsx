@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect, useLayoutEffect} from 'react'
 import axios from 'axios'
+import ComponentWillUnMountExample from "./UseEffectPackage/ComponentWillUnMountExample";
 
 const API = 'https://rickandmortyapi.com/api/character'
 const HooksComponent = () => {
@@ -17,15 +18,21 @@ const HooksComponent = () => {
         //Datayı set ettikten hemen sonra loading değerini false a çekiyoruz
         setLoading(false);
     }
+    // useLayoutEffect(
+    //     () => {
+    //         console.log("useLayoutEffect örneği")
+    //     }
+    // );
 
     return (
-        <div>
+        <div id="Hooks">
             {!loading ? (
                 characters.map((ddd) => <h6>{ddd.name}</h6>)
                 )
                 :
                 (
-                    <div>Loading</div>
+                    // <div>Loading</div>
+                    <ComponentWillUnMountExample/>
                 )
             }
         </div>
